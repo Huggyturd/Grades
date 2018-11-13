@@ -11,11 +11,29 @@ namespace Grades.Tests.Types
     public class ReferenceTypeTests
     {
         [TestMethod]
+        public void UpperCaseString()
+        {
+            string name = "cleiton";
+            name = name.ToUpper();
+
+            Assert.AreEqual("CLEITON", name);
+        }
+
+        [TestMethod]
+        public void AddDaysToDateTime()
+        {
+            DateTime date = new DateTime(2015, 1, 1);
+            date = date.AddDays(1);
+
+            Assert.AreEqual(2, date.Day);
+        }
+
+        [TestMethod]
         public void ValueTypesPassByValue()
         {
             int x = 46;
             IncrementNumber(ref x);
-            Assert.AreEqual(46, x);
+            Assert.AreEqual(47, x);
         }
 
         private void IncrementNumber (ref int number)
