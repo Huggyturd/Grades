@@ -23,6 +23,14 @@ namespace Grades
             {
                 Console.WriteLine(ex.Message);
             }
+            catch(NullReferenceException ex)
+            {
+                Console.WriteLine("Something went wrong!");
+            }
+            catch(Exception)
+            {
+                Console.WriteLine("Something went wrong!");
+            }
 
             book.AddGrade(91);
             book.AddGrade(89.5f);
