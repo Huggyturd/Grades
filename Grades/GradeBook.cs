@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Grades
 {
-    public class GradeBook : object
+    public class GradeBook : GradeTracker
     {
         public GradeBook()
         {
@@ -15,7 +15,7 @@ namespace Grades
             grades = new List<float>();
         }
 
-        public virtual GradeStatistics ComputeStatistics()
+        public override GradeStatistics ComputeStatistics()
         {
             GradeStatistics stats = new GradeStatistics();
             stats.HighestGrade = 0;
@@ -33,7 +33,7 @@ namespace Grades
             return stats;
         }
 
-        internal void WriteGrades(TextWriter destination)
+        public override void WriteGrades(TextWriter destination)
         {
             for (int i = grades.Count; i > 0; i--)
             {
@@ -41,7 +41,7 @@ namespace Grades
             }
         }
 
-        public void AddGrade(float grade)
+        public override void AddGrade(float grade)
         {
             grades.Add(grade);
         }
