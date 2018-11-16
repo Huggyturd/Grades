@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -46,35 +47,11 @@ namespace Grades
             grades.Add(grade);
         }
 
-        public string Name
+        public override IEnumerator GetEnumerator()
         {
-            get
-            {
-                return _name;
-            }
-            set
-            {
-                if(string.IsNullOrEmpty(value))
-                {
-                    throw new ArgumentException("Name cannot be null or empty");
-                }
-
-                if (_name != value && NameChanged != null)
-                {
-                    NameChangedEventArgs args = new NameChangedEventArgs();
-                    args.ExistingName = _name;
-                    args.NewName = value;
-                    NameChanged(this, args);
-                    NameChanged(this, args);
-                }
-                _name = value;
-            }
-
+            return grades.GetEnumerator();
         }
 
-        public event NameChangedDelegate NameChanged;
-
         protected List<float> grades;
-        private string _name;
     }
 }
